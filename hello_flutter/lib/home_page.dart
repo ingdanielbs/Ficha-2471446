@@ -33,10 +33,7 @@ class MyHomePage extends StatelessWidget {
                                 BorderRadius.all(Radius.circular(10))),
                         child: IconButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MedicosPage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>const MedicosPage()));
                           },
                           icon: const Icon(
                             Icons.supervisor_account,

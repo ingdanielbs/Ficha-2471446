@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/medico_detail_page.dart';
 import 'package:hello_flutter/medicos_list.dart';
 
 import 'appbar_nav.dart';
@@ -9,8 +10,10 @@ class MedicosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(preferredSize: Size.fromHeight(50),
-        child: AppbarNav(titulo: 'Medical Help'),),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: AppbarNav(titulo: 'Medical Help'),
+      ),
       body: ListView.separated(
         itemCount: medicos.length,
         separatorBuilder: (BuildContext context, int index) => const Divider(),
@@ -24,8 +27,17 @@ class MedicosPage extends StatelessWidget {
                   radius: 25,
                   backgroundImage: NetworkImage(medicos[index]['imagen']),
                 ),
-                Text('${medicos[index]['nombre']} ${medicos[index]['apellido']}'),
-                IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward))
+                Text(
+                    '${medicos[index]['nombre']} ${medicos[index]['apellido']}'),
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  MedicoDetail(medico: medicos[index])));
+                    },
+                    icon: Icon(Icons.arrow_forward))
               ],
             ),
           );
