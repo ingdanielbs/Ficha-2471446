@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/medicos_list.dart';
 
 import 'appbar_nav.dart';
 
@@ -36,10 +37,31 @@ class MedicoDetail extends StatelessWidget {
                   backgroundImage: NetworkImage(medico['imagen']),
                 ),
                 Text("${medico['nombre']} ${medico['apellido']}", style: const TextStyle(color: Colors.white, fontSize: 22),),
-                Text("${medico['especialidad']}", style: const TextStyle(color: Colors.white, fontSize: 18),),
+                Text("${medico['especialidad']}", style: const TextStyle(color: Colors.white, fontSize: 18),),                
               ]),
             ),
           ),
+
+          ListTile(
+            title: Text("Información personal"),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,              
+              children: [
+                Text('Correo: ${medico['correo']}'),
+                Text('Teléfono: ${medico['telefono']}'),
+                medico['estado'] ? Text('Activo', style: TextStyle(color: Colors.green)) : Text('Inactivo', style: TextStyle(color: Colors.red) ,)
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          ListTile(
+            title: Text('Entidades Aliadas'),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for(var entidad in medico['entidades']) Text(entidad)
+              ],
+            ),)
           
         ],),
       ),
