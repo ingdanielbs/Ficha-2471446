@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/appbar_nav.dart';
 import 'package:hello_flutter/medicos_page.dart';
+import 'package:hello_flutter/products_list_page.dart';
 
 import 'image_slider.dart';
 
@@ -82,7 +83,9 @@ class MyHomePage extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductsList()));
+                          },
                           icon: const Icon(
                             Icons.local_hospital,
                             size: 50,
